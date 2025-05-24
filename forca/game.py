@@ -26,6 +26,9 @@ class JogoForca:
         self.title_img = tk.Label(self.window, image=self.img_tk, bg=self.color_bg)
         self.title_img.pack(pady=80)
 
+        # Botão start
+        
+
     def run(self):
         # Inicia o loop principal
         self.window.mainloop()
