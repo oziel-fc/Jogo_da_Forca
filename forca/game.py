@@ -21,9 +21,10 @@ class JogoForca:
     def home_screen(self):
         img_path = path / "imgs" / "title.png"
         self.img_ = Image.open(img_path)
-        self.img_ = self.img_.resize((200, 50))
+        self.img_ = self.img_.resize((800, 132))
         self.img_tk = ImageTk.PhotoImage(self.img_)
         self.title_img = tk.Label(self.window, image=self.img_tk, bg=self.color_bg)
+        self.title_img.pack(pady=80)
 
     def run(self):
         # Inicia o loop principal
