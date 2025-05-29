@@ -10,6 +10,8 @@ class JogoForca:
         self.color_bg = "#F2ECCE"
         self.tab()
         self.home_screen()
+        self.start_button()
+
     # Configurações da janela
     def tab(self):
         path_ico = path / "imgs" / "icon.ico"
@@ -26,8 +28,9 @@ class JogoForca:
         self.title_img = tk.Label(self.window, image=self.img_tk, bg=self.color_bg)
         self.title_img.pack(pady=80)
 
-        # Botão start
-        
+    def start_button(self):
+        self.start_btn = tk.Button(self.window, text="Start", font=("Comic Sans MS", 20))
+        self.start_btn.place(relx=0.5, rely=0.5, width=200, height=80)
 
     def run(self):
         # Inicia o loop principal
@@ -35,5 +38,6 @@ class JogoForca:
 
 
 if __name__ == "__main__":
+
     app = JogoForca()
     app.run()
