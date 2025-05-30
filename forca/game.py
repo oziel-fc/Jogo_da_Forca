@@ -11,6 +11,7 @@ class JogoForca:
         self.tab()
         self.home_screen()
         self.start_button()
+        self.credits()
 
     # Configurações da janela
     def tab(self):
@@ -19,18 +20,27 @@ class JogoForca:
         self.window.title("Forca")
         self.window.geometry("1200x900")
         self.window.configure(bg=self.color_bg)
+        self.window.minsize(width=1200, height=900)
 
     def home_screen(self):
-        img_path = path / "imgs" / "title.png"
-        self.img_ = Image.open(img_path)
-        self.img_ = self.img_.resize((800, 132))
-        self.img_tk = ImageTk.PhotoImage(self.img_)
+        self.img_path_t = path / "imgs" / "title.png"
+        self.img_t = Image.open(self.img_path_t)
+        self.img_t = self.img_t.resize((800, 132))
+        self.img_tk = ImageTk.PhotoImage(self.img_t)
         self.title_img = tk.Label(self.window, image=self.img_tk, bg=self.color_bg)
         self.title_img.pack(pady=80)
 
     def start_button(self):
-        self.start_btn = tk.Button(self.window, text="Start", font=("Comic Sans MS", 20))
-        self.start_btn.place(relx=0.5, rely=0.5, width=200, height=80)
+        self.start_btn = tk.Button(self.window, text="Start", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", activeforeground="#163600")
+        self.start_btn.place(relx=0.44, rely=0.48, width=200, height=80)
+    
+    def credits(self):
+        self.img_path_c = path / "imgs" / "credits.png"
+        self.img_c = Image.open(self.img_path_c)
+        self.img_c = self.img_c.resize((120, 120))
+        self.img_c_tk = ImageTk.PhotoImage(self.img_c)
+        self.credits_img = tk.Label(self.window, image=self.img_c_tk, bg=self.color_bg)
+        self.credits_img.place(relx=0.85, rely=0.8)
 
     def run(self):
         # Inicia o loop principal
