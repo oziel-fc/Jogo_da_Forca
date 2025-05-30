@@ -1,8 +1,13 @@
 import tkinter as tk
 from pathlib import Path
 from PIL import Image, ImageTk
+import webbrowser
 
 path = Path(__file__).parent
+
+def abrir_link():
+    webbrowser.open("https://github.com/oziel-fc/Jogo_da_Forca")
+
 
 class JogoForca:
     def __init__(self):
@@ -34,6 +39,10 @@ class JogoForca:
         self.start_btn = tk.Button(self.window, text="Start", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", activeforeground="#163600")
         self.start_btn.place(relx=0.44, rely=0.48, width=200, height=80)
     
+    # Créditos
+    def open_link(self, event=None):
+        webbrowser.open("https://github.com/oziel-fc/Jogo_da_Forca")
+
     def credits(self):
         self.img_path_c = path / "imgs" / "credits.png"
         self.img_c = Image.open(self.img_path_c)
@@ -41,6 +50,8 @@ class JogoForca:
         self.img_c_tk = ImageTk.PhotoImage(self.img_c)
         self.credits_img = tk.Label(self.window, image=self.img_c_tk, bg=self.color_bg)
         self.credits_img.place(relx=0.85, rely=0.8)
+        self.credits_img.bind('<Button-1>', self.open_link)
+        
 
     def run(self):
         # Inicia o loop principal
