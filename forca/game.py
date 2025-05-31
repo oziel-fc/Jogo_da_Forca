@@ -36,7 +36,7 @@ class HomePage:
     # Configuração botão de start funcional
     def start_button(self):
         self.start_btn = tk.Button(self.window, text="Start", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", 
-                                   activeforeground="#163600", command=self.clear_page)
+                                   activeforeground="#163600", cursor="hand2", command=self.clear_page)
         self.start_btn.place(relx=0.44, rely=0.48, width=200, height=80)
     
     # Créditos
@@ -48,7 +48,7 @@ class HomePage:
         self.img_c = Image.open(self.img_path_c)
         self.img_c = self.img_c.resize((120, 120))
         self.img_c_tk = ImageTk.PhotoImage(self.img_c)
-        self.credits_img = tk.Label(self.window, image=self.img_c_tk, bg=self.color_bg)
+        self.credits_img = tk.Label(self.window, image=self.img_c_tk, bg=self.color_bg, cursor="hand2")
         self.credits_img.place(relx=0.85, rely=0.8)
         self.credits_img.bind('<Button-1>', self.open_link)
 
