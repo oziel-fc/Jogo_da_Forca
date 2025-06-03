@@ -5,6 +5,13 @@ import webbrowser
 
 path = Path(__file__).parent
 
+class GameScreen:
+    def __init__(self, window):
+        self.window = window
+        self.color_bg = "#F2ECCE"
+        self.frame = tk.Frame(self.window, bg=self.color_bg)
+        self.frame.place(relx=0, rely=0, relheight=1, relwidth=1)
+        tk.Label(self.frame, text="Jogo da Forca", font=("Arial", 20), bg=self.color_bg).pack(pady=20)
 
 class HomePage:
     def __init__(self):
@@ -36,7 +43,7 @@ class HomePage:
     # Configuração botão de start funcional
     def start_button(self):
         self.start_btn = tk.Button(self.window, text="Start", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", 
-                                   activeforeground="#163600", cursor="hand2", command=self.clear_page)
+                                   activeforeground="#163600", cursor="hand2", command=self.open_game)
         self.start_btn.place(relx=0.44, rely=0.48, width=200, height=80)
     
     # Créditos
@@ -56,6 +63,10 @@ class HomePage:
     def clear_page(self):
         for widget in self.window.winfo_children():
             widget.destroy()
+
+    def open_game(self):
+        self.clear_page()
+        GameScreen(self.window)
 
     def run(self):
         # Inicia o loop principal
