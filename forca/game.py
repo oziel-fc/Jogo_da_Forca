@@ -6,12 +6,22 @@ import webbrowser
 path = Path(__file__).parent
 
 class GameScreen:
+    # Iniciando um frame principal para adicionar elementos nele
     def __init__(self, window):
         self.window = window
         self.color_bg = "#F2ECCE"
         self.frame = tk.Frame(self.window, bg=self.color_bg)
         self.frame.place(relx=0, rely=0, relheight=1, relwidth=1)
-        tk.Label(self.frame, text="Jogo da Forca", font=("Arial", 20), bg=self.color_bg).pack(pady=20)
+        self.hangman()
+    
+    def hangman(self):
+        self.img_path_h = path / "imgs" / "hangman.png"
+        self.img_h = Image.open(self.img_path_h)
+        self.img_h = self.img_h.resize((250, 250))
+        self.img_tk = ImageTk.PhotoImage(self.img_h)
+        self.hangman_img = tk.Label(self.window, image=self.img_tk, bg=self.color_bg)
+        self.hangman_img.image = self.img_tk
+        self.hangman_img.pack(pady=200)
 
 class HomePage:
     def __init__(self):
