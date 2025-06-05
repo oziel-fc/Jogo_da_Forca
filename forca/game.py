@@ -13,15 +13,53 @@ class GameScreen:
         self.frame = tk.Frame(self.window, bg=self.color_bg)
         self.frame.place(relx=0, rely=0, relheight=1, relwidth=1)
         self.hangman()
+        self.first_layer()
+        self.fails_counter = 0
     
-    def hangman(self):
-        self.img_path_h = path / "imgs" / "hangman.png"
-        self.img_h = Image.open(self.img_path_h)
-        self.img_h = self.img_h.resize((250, 250))
+    # Função que carrega a imagem principal da tela
+    def hangman(self, img_path=path / "imgs" / "hangman.png"):
+        self.img_h = Image.open(img_path).resize((250, 250))
         self.img_tk = ImageTk.PhotoImage(self.img_h)
-        self.hangman_img = tk.Label(self.window, image=self.img_tk, bg=self.color_bg)
-        self.hangman_img.image = self.img_tk
-        self.hangman_img.pack(pady=200)
+
+        # Verifica se existe uma label, se não existir é criado, se já existe é atualizado
+        if not hasattr(self, "hangman_img"):
+            self.hangman_img = tk.Label(self.window, image=self.img_tk, bg=self.color_bg)
+            self.hangman_img.image = self.img_tk
+            self.hangman_img.pack(pady=160)
+        else:
+            self.hangman_img.config(image=self.img_tk)
+            self.hangman_img.image = self.img_tk
+
+    # Função que verifica se a letra existe na palavra
+    def verify_letter(self, letter):
+        self.words = "EIOU"
+        for l_word in self.words:
+            if letter == l_word:
+                print("Hit")
+            else:
+                self.fails_counter += 1
+                self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
+                print(f"Fail n{self.fails_counter}")
+            break
+    
+    # Primeira camadas de letras
+    def first_layer(self):
+        self.letters = "QWERTYUIOP"
+        self.size_btn = 0.0667
+        self.padding_axisX = 0.0417
+        self.between_btn = 0.0275
+        for l in self.letters:
+            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2", command=lambda l=l: self.verify_letter(l))
+            self.btn_letter.place(relx=self.padding_axisX, y=550, height=80, width=80)
+            self.padding_axisX += self.size_btn + self.between_btn
+    
+    # Segunda camadas de letras
+    def second_layer(self):
+        pass
+    
+    # Terceira camadas de letras
+    def thirty_layer(self):
+        pass
 
 class HomePage:
     def __init__(self):
