@@ -43,14 +43,15 @@ class GameScreen:
 
         # Escolhe uma dica e uma palavra aleatoriamente
         self.word_tip = random.choice(self.data_json)
-
         self.tip = self.word_tip["tip"]
-        print(self.tip)
+        
+        self.text_tip = tk.Label(self.window, text=self.tip, font=("Comic Sans MS", 20))
+        
 
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter, button):
         button.config(state="disabled", cursor="arrow")
-        self.word = "EIOU"
+        self.word = "TEST"
         if letter in self.word:
             button.config(background="#A6E07F")
             print("Hit")
