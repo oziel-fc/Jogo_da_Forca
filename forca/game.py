@@ -73,13 +73,14 @@ class GameScreen:
 
     # Atualiza a palavra conforme for acertando as letras
     def update_word(self, word, letter):
-        underline_chars = list(self.underline)
-        for pos_lttr, l in enumerate(word):
+        underline_chars = list(self.underline) # transforma a var self.underline em uma lista 
+        for pos_lttr, l in enumerate(word): # pos_lttr = position letter
             if l == letter:
                 underline_chars[pos_lttr * 2] = letter
+
         self.new_word = ''.join(underline_chars)
         self.underline = self.new_word  # atualiza o underline para refletir a nova palavra
-        print(self.new_word)
+        self.label_underline.config(text=self.underline)
 
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter, button):
