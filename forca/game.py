@@ -35,8 +35,8 @@ class GameScreen:
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter):
         self.words = "EIOU"
-        for l_word in self.words:
-            if letter == l_word:
+        for lttr in self.words:
+            if letter == lttr:
                 print("Hit")
             else:
                 self.fails_counter += 1
