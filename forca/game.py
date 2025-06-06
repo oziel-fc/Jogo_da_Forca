@@ -91,12 +91,10 @@ class GameScreen:
         if letter in self.word:
             button.config(background="#A6E07F")
             self.update_word(self.word, letter=letter)
-            print("Hit")
         else:
             self.fails_counter += 1
             self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
             button.config(background="#E07F7F")
-            print(f"Fail n{self.fails_counter}")
     
     
     # Primeira camadas de letras
