@@ -14,6 +14,8 @@ class GameScreen:
         self.frame.place(relx=0, rely=0, relheight=1, relwidth=1)
         self.hangman()
         self.first_layer()
+        self.second_layer()
+        self.thirty_layer()
         self.fails_counter = 0
     
     # Função que carrega a imagem principal da tela
@@ -47,7 +49,7 @@ class GameScreen:
         self.letters = "QWERTYUIOP"
         self.size_btn = 0.0667
         self.padding_axisX = 0.0417
-        self.between_btn = 0.0275
+        self.between_btn = 0.0279
         for l in self.letters:
             self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2", command=lambda l=l: self.verify_letter(l))
             self.btn_letter.place(relx=self.padding_axisX, y=550, height=80, width=80)
@@ -55,11 +57,25 @@ class GameScreen:
     
     # Segunda camadas de letras
     def second_layer(self):
-        pass
+        self.letters = "ASDFGHJKL"
+        self.size_btn = 0.0667
+        self.padding_axisX = 0.049833
+        self.between_btn = 0.038541
+        for l in self.letters:
+            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2", command=lambda l=l: self.verify_letter(l))
+            self.btn_letter.place(relx=self.padding_axisX, y=663, height=80, width=80)
+            self.padding_axisX += self.size_btn + self.between_btn
     
     # Terceira camadas de letras
     def thirty_layer(self):
-        pass
+        self.letters = "ZXCVBNM"
+        self.size_btn = 0.0667
+        self.padding_axisX = 0.0750
+        self.between_btn = 0.0639
+        for l in self.letters:
+            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2", command=lambda l=l: self.verify_letter(l))
+            self.btn_letter.place(relx=self.padding_axisX, y=776, height=80, width=80)
+            self.padding_axisX += self.size_btn + self.between_btn
 
 class HomePage:
     def __init__(self):
