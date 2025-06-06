@@ -66,7 +66,7 @@ class GameScreen:
         button.config(state="disabled", cursor="arrow")
 
         self.word_tip = self.return_json()
-        self.word = "TEST"
+        self.word = self.word_tip["word"]
         if letter in self.word:
             button.config(background="#A6E07F")
             print("Hit")
