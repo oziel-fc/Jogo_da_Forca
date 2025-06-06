@@ -60,6 +60,9 @@ class GameScreen:
         self.text_tip = tk.Label(self.window, text=self.tip, font=("Comic Sans MS", 28), background="#F2ECCE")
         self.text_tip.place(rely=0.075, relx=0.5, anchor="center")
 
+    # Mostra tamanho da palavra e as letras na tela em caso de acerto
+    def show_word(self):
+        pass
 
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter, button):
