@@ -21,6 +21,7 @@ class GameScreen:
         self.thirty_layer()
         self.fails_counter = 0
     
+    
     # Função que carrega a imagem principal da tela
     def hangman(self, img_path=path / "imgs" / "hangman.png"):
         self.img_h = Image.open(img_path).resize((250, 250))
@@ -35,23 +36,30 @@ class GameScreen:
             self.hangman_img.config(image=self.img_tk)
             self.hangman_img.image = self.img_tk
 
-    # Carrega dicas aleatórias e mostra na tela
-    def show_tip(self):
-        self.path_json = path / "files" / "words.json"
+    
+    # Acessa o arquivo JSON e escolhe um dict aleatório com uma palavra e uma dica e retorna
+    def return_json(self):
         with open(self.path_json, encoding="utf-8") as self.json_file:
             self.data_json = json.load(self.json_file)
 
-        # Escolhe uma dica e uma palavra aleatoriamente
         self.word_tip = random.choice(self.data_json)
-        self.tip = self.word_tip["tip"]
+        return self.word_tip
+
+
+    # Carrega dicas aleatórias e mostra na tela
+    def show_tip(self):
+        self.path_json = path / "files" / "words.json"
         
-        self.text_tip = tk.Label(self.window, text=self.tip, font=("Comic Sans MS", 20))
-        
+        self.tip = self.return_json()
+        self.tip = self.tip["tip"]
+        self.text_tip = tk.Label(self.window, text=self.tip, font=("Comic Sans MS", 28), background="#F2ECCE")
+        self.text_tip.place(rely=0.075, relx=0.5, anchor="center")
+
 
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter, button):
         button.config(state="disabled", cursor="arrow")
-        self.word = "TEST"
+        self.word = self.show_tip
         if letter in self.word:
             button.config(background="#A6E07F")
             print("Hit")
@@ -60,6 +68,7 @@ class GameScreen:
             self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
             button.config(background="#E07F7F")
             print(f"Fail n{self.fails_counter}")
+    
     
     # Primeira camadas de letras
     def first_layer(self):
@@ -73,6 +82,7 @@ class GameScreen:
             self.btn_letter.place(relx=self.padding_axisX, y=550, height=80, width=80)
             self.padding_axisX += self.size_btn + self.between_btn
     
+    
     # Segunda camadas de letras
     def second_layer(self):
         self.letters = "ASDFGHJKL"
@@ -85,6 +95,7 @@ class GameScreen:
             self.btn_letter.place(relx=self.padding_axisX, y=663, height=80, width=80)
             self.padding_axisX += self.size_btn + self.between_btn
     
+    
     # Terceira camadas de letras
     def thirty_layer(self):
         self.letters = "ZXCVBNM"
@@ -96,6 +107,7 @@ class GameScreen:
             self.btn_letter.config(command=lambda l_=l, btn=self.btn_letter: self.verify_letter(l_, btn))
             self.btn_letter.place(relx=self.padding_axisX, y=776, height=80, width=80)
             self.padding_axisX += self.size_btn + self.between_btn
+
 
 class HomePage:
     def __init__(self):
