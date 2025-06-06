@@ -60,16 +60,17 @@ class GameScreen:
         self.text_tip = tk.Label(self.window, text=self.tip, font=("Comic Sans MS", 28), background="#F2ECCE")
         self.text_tip.place(rely=0.075, relx=0.5, anchor="center")
 
-    # Mostra tamanho da palavra e as letras na tela em caso de acerto
+    # Mostra tamanho da palavra e mostra as letras na tela em caso de acerto
     def show_word(self):
         self.word_tip = self.return_json()
         self.word = self.word_tip["word"]
         
-        # Imprimir underline na tela
+        # Imprime na tela os underlines com a mesma quantidade de letras da palavra
         self.len_word = len(self.word)
         self.underline = self.len_word * "_ "
         self.label_underline = tk.Label(self.window, text=self.underline, font=("Comic Sans MS", 28), background="#F2ECCE")
         self.label_underline.place(rely=0.53, relx=0.5, anchor="center")
+        
 
     # Atualiza a palavra conforme for acertando as letras
     def update_word(self, word, letter):
@@ -78,9 +79,10 @@ class GameScreen:
             if l == letter:
                 underline_chars[pos_lttr * 2] = letter
 
-        self.new_word = ''.join(underline_chars)
+        self.new_word = ''.join(underline_chars) # junta novamente a lista em uma string
         self.underline = self.new_word  # atualiza o underline para refletir a nova palavra
-        self.label_underline.config(text=self.underline)
+        self.label_underline.config(text=self.underline) # atualiza na tela a letra acertada
+
 
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter, button):
