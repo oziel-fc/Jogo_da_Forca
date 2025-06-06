@@ -32,17 +32,21 @@ class GameScreen:
             self.hangman_img.config(image=self.img_tk)
             self.hangman_img.image = self.img_tk
 
+    def show_tip(self):
+        pass
+
     # Função que verifica se a letra existe na palavra
-    def verify_letter(self, letter):
-        self.words = "EIOU"
-        for lttr in self.words:
-            if letter == lttr:
-                print("Hit")
-            else:
-                self.fails_counter += 1
-                self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
-                print(f"Fail n{self.fails_counter}")
-            break
+    def verify_letter(self, letter, button):
+        button.config(state="disabled", cursor="arrow")
+        self.word = "EIOU"
+        if letter in self.word:
+            button.config(background="#A6E07F")
+            print("Hit")
+        else:
+            self.fails_counter += 1
+            self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
+            button.config(background="#E07F7F")
+            print(f"Fail n{self.fails_counter}")
     
     # Primeira camadas de letras
     def first_layer(self):
@@ -51,7 +55,8 @@ class GameScreen:
         self.padding_axisX = 0.0417
         self.between_btn = 0.0279
         for l in self.letters:
-            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2", command=lambda l=l: self.verify_letter(l))
+            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2")
+            self.btn_letter.config(command=lambda l_=l, btn=self.btn_letter: self.verify_letter(l_, btn))
             self.btn_letter.place(relx=self.padding_axisX, y=550, height=80, width=80)
             self.padding_axisX += self.size_btn + self.between_btn
     
@@ -62,7 +67,8 @@ class GameScreen:
         self.padding_axisX = 0.049833
         self.between_btn = 0.038541
         for l in self.letters:
-            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2", command=lambda l=l: self.verify_letter(l))
+            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2")
+            self.btn_letter.config(command=lambda l_=l, btn=self.btn_letter: self.verify_letter(l_, btn))
             self.btn_letter.place(relx=self.padding_axisX, y=663, height=80, width=80)
             self.padding_axisX += self.size_btn + self.between_btn
     
@@ -73,7 +79,8 @@ class GameScreen:
         self.padding_axisX = 0.0750
         self.between_btn = 0.0639
         for l in self.letters:
-            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2", command=lambda l=l: self.verify_letter(l))
+            self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2")
+            self.btn_letter.config(command=lambda l_=l, btn=self.btn_letter: self.verify_letter(l_, btn))
             self.btn_letter.place(relx=self.padding_axisX, y=776, height=80, width=80)
             self.padding_axisX += self.size_btn + self.between_btn
 
