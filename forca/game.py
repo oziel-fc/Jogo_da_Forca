@@ -25,7 +25,7 @@ class GameScreen:
         self.thirty_layer()
         self.fails_counter = 0
     
-    
+
     # Função que carrega a imagem principal da tela
     def hangman(self, img_path=path / "imgs" / "hangman.png"):
         self.img_h = Image.open(img_path).resize((250, 250))
@@ -40,7 +40,7 @@ class GameScreen:
             self.hangman_img.config(image=self.img_tk)
             self.hangman_img.image = self.img_tk
 
-    
+
     # Acessa o arquivo JSON e escolhe um dict aleatório com uma palavra e uma dica e retorna
     def return_json(self):
         self.path_json = path / "files" / "words.json"
@@ -52,6 +52,7 @@ class GameScreen:
             self.only_once_json = False
         
         return self.word_tip
+
 
     # Carrega dicas aleatórias e mostra na tela
     def show_tip(self):        
@@ -71,7 +72,7 @@ class GameScreen:
         self.label_underline = tk.Label(self.window, text=self.underline, font=("Comic Sans MS", 28), background="#F2ECCE")
         self.label_underline.place(rely=0.53, relx=0.5, anchor="center")
         
-
+        
     # Atualiza a palavra conforme for acertando as letras
     def update_word(self, word, letter):
         underline_chars = list(self.underline) # transforma a var self.underline em uma lista 
