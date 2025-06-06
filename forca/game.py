@@ -2,6 +2,8 @@ import tkinter as tk
 from pathlib import Path
 from PIL import Image, ImageTk
 import webbrowser
+import json
+import random
 
 path = Path(__file__).parent
 
@@ -13,6 +15,7 @@ class GameScreen:
         self.frame = tk.Frame(self.window, bg=self.color_bg)
         self.frame.place(relx=0, rely=0, relheight=1, relwidth=1)
         self.hangman()
+        self.show_tip()
         self.first_layer()
         self.second_layer()
         self.thirty_layer()
@@ -32,8 +35,17 @@ class GameScreen:
             self.hangman_img.config(image=self.img_tk)
             self.hangman_img.image = self.img_tk
 
+    # Carrega dicas aleatórias e mostra na tela
     def show_tip(self):
-        pass
+        self.path_json = path / "files" / "words.json"
+        with open(self.path_json, encoding="utf-8") as self.json_file:
+            self.data_json = json.load(self.json_file)
+
+        # Escolhe uma dica e uma palavra aleatoriamente
+        self.word_tip = random.choice(self.data_json)
+
+        self.tip = self.word_tip["tip"]
+        print(self.tip)
 
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter, button):
