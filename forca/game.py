@@ -19,6 +19,7 @@ class GameScreen:
         self.frame.place(relx=0, rely=0, relheight=1, relwidth=1)
         self.hangman()
         self.show_tip()
+        self.show_word()
         self.first_layer()
         self.second_layer()
         self.thirty_layer()
@@ -42,6 +43,7 @@ class GameScreen:
     
     # Acessa o arquivo JSON e escolhe um dict aleatório com uma palavra e uma dica e retorna
     def return_json(self):
+        self.path_json = path / "files" / "words.json"
         if self.only_once_json:
             with open(self.path_json, encoding="utf-8") as self.json_file:
                 self.data_json = json.load(self.json_file)
@@ -52,9 +54,7 @@ class GameScreen:
         return self.word_tip
 
     # Carrega dicas aleatórias e mostra na tela
-    def show_tip(self):
-        self.path_json = path / "files" / "words.json"
-        
+    def show_tip(self):        
         self.tip = self.return_json()
         self.tip = self.tip["tip"]
         self.text_tip = tk.Label(self.window, text=self.tip, font=("Comic Sans MS", 28), background="#F2ECCE")
@@ -62,7 +62,14 @@ class GameScreen:
 
     # Mostra tamanho da palavra e as letras na tela em caso de acerto
     def show_word(self):
-        pass
+        self.word_tip = self.return_json()
+        self.word = self.word_tip["word"]
+        
+        # Imprimir underline na tela
+        self.len_word = len(self.word)
+        self.underline = self.len_word * " _ "
+        self.label_underline = tk.Label(self.window, text=self.underline, font=("Comic Sans MS", 28), background="#F2ECCE")
+        self.label_underline.place(rely=0.53, relx=0.5, anchor="center")
 
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter, button):
@@ -136,6 +143,7 @@ class HomePage:
         self.window.geometry("1200x900")
         self.window.configure(bg=self.color_bg)
         self.window.minsize(width=1200, height=900)
+        self.window.maxsize(width=1200, height=900)
 
     # Configuração tela inicial
     def home_screen(self):
