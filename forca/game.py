@@ -10,6 +10,9 @@ path = Path(__file__).parent
 class GameScreen:
     # Iniciando um frame principal para adicionar elementos nele
     def __init__(self, window):
+        # Pertence a função return_json
+        self.only_once_json = True
+
         self.window = window
         self.color_bg = "#F2ECCE"
         self.frame = tk.Frame(self.window, bg=self.color_bg)
@@ -39,12 +42,14 @@ class GameScreen:
     
     # Acessa o arquivo JSON e escolhe um dict aleatório com uma palavra e uma dica e retorna
     def return_json(self):
-        with open(self.path_json, encoding="utf-8") as self.json_file:
-            self.data_json = json.load(self.json_file)
+        if self.only_once_json:
+            with open(self.path_json, encoding="utf-8") as self.json_file:
+                self.data_json = json.load(self.json_file)
 
-        self.word_tip = random.choice(self.data_json)
+            self.word_tip = random.choice(self.data_json)
+            self.only_once_json = False
+        
         return self.word_tip
-
 
     # Carrega dicas aleatórias e mostra na tela
     def show_tip(self):
@@ -59,7 +64,9 @@ class GameScreen:
     # Função que verifica se a letra existe na palavra
     def verify_letter(self, letter, button):
         button.config(state="disabled", cursor="arrow")
-        self.word = self.show_tip
+
+        self.word_tip = self.return_json()
+        self.word = "TEST"
         if letter in self.word:
             button.config(background="#A6E07F")
             print("Hit")
