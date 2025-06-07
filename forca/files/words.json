@@ -1,14 +1,22 @@
 [
-  {
-    "word": "ELEFANTE",
-    "tip": "É um animal grande e cinza"
-  },
-  {
-    "word": "PYTHON",
-    "tip": "Linguagem de programação"
-  },
-  {
-    "word": "PIZZA",
-    "tip": "Comida italiana"
-  }
+  { "tip": "Ave colorida", "word": "ARARA" },
+  { "tip": "Animal da floresta", "word": "ONCA" },
+  { "tip": "Fruta cítrica", "word": "LARANJA" },
+  { "tip": "Veículo urbano", "word": "ONIBUS" },
+  { "tip": "Objeto escolar", "word": "LAPIS" },
+  { "tip": "Planeta vizinho", "word": "MARTE" },
+  { "tip": "Cidade brasileira", "word": "SALVADOR" },
+  { "tip": "Instrumento musical", "word": "VIOLINO" },
+  { "tip": "Rei da selva", "word": "LEAO" },
+  { "tip": "Animal polar", "word": "URSO" },
+  { "tip": "Esporte olímpico", "word": "REMO" },
+  { "tip": "Elemento químico", "word": "OXIGENIO" },
+  { "tip": "Tecnologia portátil", "word": "CELULAR" },
+  { "tip": "Parte do corpo", "word": "TORNOZELO" },
+  { "tip": "Capital europeia", "word": "LISBOA" },
+  { "tip": "Comida italiana", "word": "LASANHA" },
+  { "tip": "Objeto de escrita", "word": "CANETA" },
+  { "tip": "Estação do ano", "word": "OUTONO" },
+  { "tip": "Animal doméstico", "word": "GATO" },
+  { "tip": "Refeição matinal", "word": "CAFE" }
 ]

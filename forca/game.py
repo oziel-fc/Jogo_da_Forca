@@ -72,7 +72,7 @@ class GameScreen:
         self.label_underline = tk.Label(self.window, text=self.underline, font=("Comic Sans MS", 28), background="#F2ECCE")
         self.label_underline.place(rely=0.53, relx=0.5, anchor="center")
         
-        
+
     # Atualiza a palavra conforme for acertando as letras
     def update_word(self, word, letter):
         underline_chars = list(self.underline) # transforma a var self.underline em uma lista 
@@ -138,6 +138,11 @@ class GameScreen:
             self.btn_letter.place(relx=self.padding_axisX, y=776, height=80, width=80)
             self.padding_axisX += self.size_btn + self.between_btn
 
+    
+    # Limpa a tela
+    def clear_page(self):
+        for widget in self.window.winfo_children():
+            widget.destroy()
 
 class HomePage:
     def __init__(self):
