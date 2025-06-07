@@ -144,6 +144,12 @@ class GameScreen:
         for widget in self.window.winfo_children():
             widget.destroy()
 
+    def victory_screen(self):
+        pass
+    
+    def defeat_screen(self):
+        pass
+
 class HomePage:
     def __init__(self):
         self.window = tk.Tk()
