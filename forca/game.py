@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import webbrowser
 import json
 import random
+import time
 
 path = Path(__file__).parent
 
@@ -12,6 +13,7 @@ class GameScreen:
     def __init__(self, window):
         # Pertence a função return_json
         self.only_once_json = True
+        self.fails_counter = 0
 
         self.window = window
         self.color_bg = "#F2ECCE"
@@ -23,7 +25,6 @@ class GameScreen:
         self.first_layer()
         self.second_layer()
         self.thirty_layer()
-        self.fails_counter = 0
     
 
     # Função que carrega a imagem principal da tela
@@ -95,9 +96,12 @@ class GameScreen:
             button.config(background="#A6E07F")
             self.update_word(self.word, letter=letter)
         else:
-            self.fails_counter += 1
             self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
             button.config(background="#E07F7F")
+            if self.fails_counter == 5:
+            # Espera 1 segundo antes de limpar a tela
+                self.window.after(3000, self.clear_frame)
+            self.fails_counter += 1
     
     
     # Primeira camadas de letras
@@ -140,7 +144,7 @@ class GameScreen:
 
     
     # Limpa a tela
-    def clear_page(self):
+    def clear_frame(self):
         for widget in self.window.winfo_children():
             widget.destroy()
 
