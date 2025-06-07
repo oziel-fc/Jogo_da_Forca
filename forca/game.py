@@ -99,7 +99,7 @@ class GameScreen:
             self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
             button.config(background="#E07F7F")
             if self.fails_counter == 5:
-            # Espera 1 segundo antes de limpar a tela
+            # Espera um tempo antes de limpar a tela
                 self.window.after(3000, self.clear_frame)
             self.fails_counter += 1
     
