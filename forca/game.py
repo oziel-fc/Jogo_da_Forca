@@ -158,6 +158,9 @@ class GameScreen:
         self.score.place(rely=0.145, relx=0.5, anchor="center")
         self.fails = tk.Label(self.frame_green, text=f"Erros: {self.fails_counter}", bg="#FFFFFF", font=("Comic Sans MS", 20))
         self.fails.place(rely=0.21, relx=0.5, anchor="center")
+        self.button_restart = tk.Button(self.window, text="Restart", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", 
+                                activeforeground="#163600", cursor="hand2")
+        self.button_restart.place(relx=0.5, rely=0.5, width=200, height=80, anchor="center")
 
     def defeat_screen(self):
         pass
