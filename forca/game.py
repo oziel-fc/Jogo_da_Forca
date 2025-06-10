@@ -103,14 +103,17 @@ class GameScreen:
             if self.hits_counter == len(self.word):
                 self.window.after(2000, self.clear_frame)
                 self.window.after(3000, self.victory_screen)
+
                 # Classificações de acordo com pontuação
                 if self.fails_counter == 0:
                     self.score_text = "Lendário"
                 elif self.fails_counter == 1:
-                    self.score_text = "Excelente"
+                    self.score_text = "Excepcional"
                 elif self.fails_counter == 2:
-                    self.score_text = "Regular"
+                    self.score_text = "Ótimo"
                 elif self.fails_counter == 3:
+                    self.score_text = "Regular"
+                elif self.fails_counter == 4:
                     self.score_text = "Iniciante"
                 else:
                     self.score_text = "Ufa! Por pouco!"
