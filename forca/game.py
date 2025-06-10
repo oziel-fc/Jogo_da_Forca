@@ -14,6 +14,7 @@ class GameScreen:
     def __init__(self, window):
         # Pertence a função return_json
         self.only_once_json = True
+        self.hits_counter = 0
         self.fails_counter = 0
         self.score_text = str()
 
@@ -82,6 +83,7 @@ class GameScreen:
         for pos_lttr, l in enumerate(word): # pos_lttr = position letter
             if l == letter:
                 underline_chars[pos_lttr * 2] = letter
+                self.hits_counter += 1 # contador de acertos
 
         self.new_word = ''.join(underline_chars) # junta novamente a lista em uma string
         self.underline = self.new_word  # atualiza o underline para refletir a nova palavra
@@ -93,11 +95,15 @@ class GameScreen:
         button.config(state="disabled", cursor="arrow")
 
         self.word_tip = self.return_json()
-        self.brute_word = self.word_tip["word"]
-        self.word = unidecode(self.brute_word)
+        self.brute_word = self.word_tip["word"] # palavra com acentuações
+        self.word = unidecode(self.brute_word) # palavra formatada
         if letter in self.word:
             button.config(background="#A6E07F")
             self.update_word(self.word, letter=letter)
+            if self.hits_counter == len(self.word):
+                self.window.after(2000, self.clear_frame)
+                self.score_text = "Excelente"
+                self.window.after(3000, self.victory_screen)
         else:
             self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
             button.config(background="#E07F7F")
@@ -170,7 +176,7 @@ class GameScreen:
                                 activeforeground="#163600", cursor="hand2", command=lambda: (self.clear_frame, time.sleep(1), GameScreen(window=self.window)))
         self.restart_btn.place(relx=0.5, rely=0.5, width=200, height=80, anchor="center")
 
-        self.reveal_word = tk.Label(self.frame_root, text=f"Palavra: {self.word}", bg="#FFFFFF", font=("Comic Sans MS", 20))
+        self.reveal_word = tk.Label(self.frame_root, text=f"Palavra: {self.brute_word}", bg="#FFFFFF", font=("Comic Sans MS", 20))
         self.reveal_word.place(rely=0.8, relx=0.5, anchor="center")
 
     def victory_screen(self):
