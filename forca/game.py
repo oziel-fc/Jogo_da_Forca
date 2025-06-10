@@ -102,8 +102,19 @@ class GameScreen:
             self.update_word(self.word, letter=letter)
             if self.hits_counter == len(self.word):
                 self.window.after(2000, self.clear_frame)
-                self.score_text = "Excelente"
                 self.window.after(3000, self.victory_screen)
+                # Classificações de acordo com pontuação
+                if self.fails_counter == 0:
+                    self.score_text = "Lendário"
+                elif self.fails_counter == 1:
+                    self.score_text = "Excelente"
+                elif self.fails_counter == 2:
+                    self.score_text = "Regular"
+                elif self.fails_counter == 3:
+                    self.score_text = "Iniciante"
+                else:
+                    self.score_text = "Ufa! Por pouco!"
+
         else:
             self.hangman(img_path=path / "imgs" / f"fail_{self.fails_counter}.png")
             button.config(background="#E07F7F")
