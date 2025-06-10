@@ -5,6 +5,7 @@ import webbrowser
 import json
 import random
 import time
+from unidecode import unidecode
 
 path = Path(__file__).parent
 
@@ -92,7 +93,8 @@ class GameScreen:
         button.config(state="disabled", cursor="arrow")
 
         self.word_tip = self.return_json()
-        self.word = self.word_tip["word"]
+        self.brute_word = self.word_tip["word"]
+        self.word = unidecode(self.brute_word)
         if letter in self.word:
             button.config(background="#A6E07F")
             self.update_word(self.word, letter=letter)
@@ -151,6 +153,7 @@ class GameScreen:
         for widget in self.window.winfo_children():
             widget.destroy()
 
+    # Tela de fim de jogo
     def show_ends_screen(self, title, title_color):
         self.frame_root = tk.Frame(self.window, bg="#FFFFFF")
         self.frame_root.place(relx=0.1, rely=0.1, relheight=0.8, relwidth=0.8)
@@ -159,11 +162,16 @@ class GameScreen:
 
         self.score = tk.Label(self.frame_root, text=self.score_text, bg="#FFFFFF", font=("Comic Sans MS", 20))
         self.score.place(rely=0.145, relx=0.5, anchor="center")
+
         self.fails = tk.Label(self.frame_root, text=f"Erros: {self.fails_counter}", bg="#FFFFFF", font=("Comic Sans MS", 20))
         self.fails.place(rely=0.21, relx=0.5, anchor="center")
+
         self.restart_btn = tk.Button(self.frame_root, text="Restart", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", 
                                 activeforeground="#163600", cursor="hand2", command=lambda: (self.clear_frame, time.sleep(1), GameScreen(window=self.window)))
         self.restart_btn.place(relx=0.5, rely=0.5, width=200, height=80, anchor="center")
+
+        self.reveal_word = tk.Label(self.frame_root, text=f"Palavra: {self.word}", bg="#FFFFFF", font=("Comic Sans MS", 20))
+        self.reveal_word.place(rely=0.8, relx=0.5, anchor="center")
 
     def victory_screen(self):
         self.show_ends_screen(title="Vitória", title_color="#2E7201")
