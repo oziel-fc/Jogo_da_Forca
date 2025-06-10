@@ -14,6 +14,7 @@ class GameScreen:
         # Pertence a função return_json
         self.only_once_json = True
         self.fails_counter = 0
+        self.score_text = str()
 
         self.window = window
         self.color_bg = "#F2ECCE"
@@ -101,7 +102,8 @@ class GameScreen:
             if self.fails_counter == 5:
             # Espera um tempo antes de limpar a tela
                 self.window.after(2000, self.clear_frame)
-                self.window.after(3000, self.victory_screen)
+                self.score_text = "Mais sorte da próxima vez"
+                self.window.after(3000, self.defeat_screen)
             self.fails_counter += 1
     
     
@@ -149,21 +151,25 @@ class GameScreen:
         for widget in self.window.winfo_children():
             widget.destroy()
 
-    def victory_screen(self):
+    def show_ends_screen(self, title, title_color):
         self.frame_root = tk.Frame(self.window, bg="#FFFFFF")
         self.frame_root.place(relx=0.1, rely=0.1, relheight=0.8, relwidth=0.8)
-        self.victory_text = tk.Label(self.frame_root, text="Vitória", bg="#FFFFFF", font=("Comic Sans MS", 36), fg="#2E7201")
+        self.victory_text = tk.Label(self.frame_root, text=title, bg="#FFFFFF", font=("Comic Sans MS", 36), fg=title_color)
         self.victory_text.place(rely=0.07, relx=0.5, anchor="center")
-        self.score = tk.Label(self.frame_root, text="Excelente", bg="#FFFFFF", font=("Comic Sans MS", 20))
+
+        self.score = tk.Label(self.frame_root, text=self.score_text, bg="#FFFFFF", font=("Comic Sans MS", 20))
         self.score.place(rely=0.145, relx=0.5, anchor="center")
         self.fails = tk.Label(self.frame_root, text=f"Erros: {self.fails_counter}", bg="#FFFFFF", font=("Comic Sans MS", 20))
         self.fails.place(rely=0.21, relx=0.5, anchor="center")
         self.restart_btn = tk.Button(self.frame_root, text="Restart", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", 
-                                activeforeground="#163600", cursor="hand2", command=lambda: (self.clear_frame, GameScreen(window=self.window)))
+                                activeforeground="#163600", cursor="hand2", command=lambda: (self.clear_frame, time.sleep(1), GameScreen(window=self.window)))
         self.restart_btn.place(relx=0.5, rely=0.5, width=200, height=80, anchor="center")
 
+    def victory_screen(self):
+        self.show_ends_screen(title="Vitória", title_color="#2E7201")
+
     def defeat_screen(self):
-        pass
+        self.show_ends_screen(title="Derrota", title_color="#720101")
 
 class HomePage:
     def __init__(self):
