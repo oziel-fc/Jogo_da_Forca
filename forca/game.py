@@ -100,7 +100,8 @@ class GameScreen:
             button.config(background="#E07F7F")
             if self.fails_counter == 5:
             # Espera um tempo antes de limpar a tela
-                self.window.after(3000, self.clear_frame)
+                self.window.after(2000, self.clear_frame)
+                self.window.after(3000, self.victory_screen)
             self.fails_counter += 1
     
     
@@ -149,8 +150,15 @@ class GameScreen:
             widget.destroy()
 
     def victory_screen(self):
-        pass
-    
+        self.frame_green = tk.Frame(self.window, bg="#FFFFFF")
+        self.frame_green.place(relx=0.1, rely=0.1, relheight=0.8, relwidth=0.8)
+        self.victory_text = tk.Label(self.frame_green, text="Vitória", bg="#FFFFFF", font=("Comic Sans MS", 36), fg="#2E7201")
+        self.victory_text.place(rely=0.07, relx=0.5, anchor="center")
+        self.score = tk.Label(self.frame_green, text="Excelente", bg="#FFFFFF", font=("Comic Sans MS", 20))
+        self.score.place(rely=0.145, relx=0.5, anchor="center")
+        self.fails = tk.Label(self.frame_green, text=f"Erros: {self.fails_counter}", bg="#FFFFFF", font=("Comic Sans MS", 20))
+        self.fails.place(rely=0.21, relx=0.5, anchor="center")
+
     def defeat_screen(self):
         pass
 
