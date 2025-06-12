@@ -24,7 +24,7 @@
   {"tip": "Capital ásiatica", "word": "TÓQUIO"},
   {"tip": "Primata africano", "word": "GORILA"},
   {"tip": "Capital europeia", "word": "BUDAPESTE"},
-  {"tip": "Ferramenta de comunicação", "word": "INTERNET"},
+  {"tip": "Meio de comunicação", "word": "INTERNET"},
   {"tip": "Animal com casco duro", "word": "TARTARUGA"},
   {"tip": "Roedor da floresta", "word": "ESQUILO"},
   {"tip": "Meio de locomoção com 4 rodas", "word": "SKATE"},
@@ -178,5 +178,13 @@
   {"tip": "O maior arquipélago do mundo", "word": "INDONÉSIA"},
   {"tip": "Arquipélago do Caribe", "word": "BAHAMAS"},
   {"tip": "Doce tradicional brasileiro", "word": "RAPADURA"},
-  {"tip": "Fruta tropical", "word": "BANANA"}
+  {"tip": "Fruta tropical", "word": "BANANA"},
+  {"tip": "Autoriedade religiosa", "word": "PAPA"},
+  {"tip": "Imperador francês", "word": "NAPOLEÃO"},
+  {"tip": "Prato oriental", "word": "SUSHI"},
+  {"tip": "Instrumento tribal", "word": "BERIMBAU"},
+  {"tip": "Item escolar", "word": "MOCHILA"},
+  {"tip": "Peça do xadrez", "word": "TORRE"},
+  {"tip": "Objeto de papel", "word": "ENVELOPE"},
+  {"tip": "Comida japonesa", "word": "TEMAKI"}
 ]

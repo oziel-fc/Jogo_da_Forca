@@ -12,7 +12,7 @@ path = Path(__file__).parent
 class GameScreen:
     # Iniciando um frame principal para adicionar elementos nele
     def __init__(self, window):
-        # Pertence a função return_json
+        # Váriaveis de acesso
         self.only_once_json = True
         self.hits_counter = 0
         self.fails_counter = 0
@@ -198,6 +198,7 @@ class GameScreen:
 
     def defeat_screen(self):
         self.show_ends_screen(title="Derrota", title_color="#720101")
+
 
 class HomePage:
     def __init__(self):
