@@ -9,7 +9,7 @@ from unidecode import unidecode
 
 path = Path(__file__).parent
 
-class GameScreen:
+class Game:
     # Iniciando um frame principal para adicionar elementos nele
     def __init__(self, window):
         # Váriaveis de acesso
@@ -101,8 +101,8 @@ class GameScreen:
             button.config(background="#A6E07F")
             self.update_word(self.word, letter=letter)
             if self.hits_counter == len(self.word):
-                self.window.after(2000, self.clear_frame)
-                self.window.after(3000, self.victory_screen)
+                self.window.after(1500, self.clear_frame)
+                self.window.after(2500, self.victory_screen)
 
                 # Classificações de acordo com pontuação
                 if self.fails_counter == 0:
@@ -123,9 +123,9 @@ class GameScreen:
             button.config(background="#E07F7F")
             if self.fails_counter == 5:
             # Espera um tempo antes de limpar a tela
-                self.window.after(2000, self.clear_frame)
+                self.window.after(1500, self.clear_frame)
                 self.score_text = "Mais sorte da próxima vez"
-                self.window.after(3000, self.defeat_screen)
+                self.window.after(2500, self.defeat_screen)
             self.fails_counter += 1
     
     
@@ -187,7 +187,7 @@ class GameScreen:
         self.fails.place(rely=0.21, relx=0.5, anchor="center")
 
         self.restart_btn = tk.Button(self.frame_root, text="Restart", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", 
-                                activeforeground="#163600", cursor="hand2", command=lambda: (self.clear_frame, time.sleep(1), GameScreen(window=self.window)))
+                                activeforeground="#163600", cursor="hand2", command=lambda: (self.clear_frame, time.sleep(1), Game(window=self.window)))
         self.restart_btn.place(relx=0.5, rely=0.5, width=200, height=80, anchor="center")
 
         self.reveal_word = tk.Label(self.frame_root, text=f"Palavra: {self.brute_word}", bg="#FFFFFF", font=("Comic Sans MS", 20))
@@ -254,7 +254,7 @@ class HomePage:
 
     def open_game(self):
         self.clear_page()
-        GameScreen(self.window)
+        Game(self.window)
 
     def run(self):
         # Inicia o loop principal
@@ -262,6 +262,5 @@ class HomePage:
 
 
 if __name__ == "__main__":
-
     app = HomePage()
     app.run()
