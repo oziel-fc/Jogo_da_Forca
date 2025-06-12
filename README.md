@@ -1,6 +1,6 @@
 # 🕹️ Jogo da Forca feito em Python
 
-Um projeto de jogo da forca interativo desenvolvido com a biblioteca Tkinter do Python e compilado para um executável. Inclui interface gráfica amigável, sistema de dicas e contagem de erros com atualizações visuais. Projeto idealizado visando mostrar competências com **Python** em um portfólio para o **GitHub**.
+Um projeto de jogo da forca interativo desenvolvido com a biblioteca **Tkinter** do Python e compilado para um executável com **PyInstaller**. Inclui interface gráfica amigável, sistema de dicas e contagem de erros com atualizações visuais. Projeto idealizado visando mostrar competências com **Python** em um portfólio para o **GitHub**.
 
 ---
 
@@ -22,3 +22,5 @@ Um projeto de jogo da forca interativo desenvolvido com a biblioteca Tkinter do 
     ```
     python forca/game.py
     ```
+  - Utilizando o executável:
+    1. Realizar Download
