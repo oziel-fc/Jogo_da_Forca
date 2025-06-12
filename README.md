@@ -4,7 +4,7 @@ Um projeto de jogo da forca interativo desenvolvido com a biblioteca Tkinter do 
 
 ---
 
-## 🎮 Características
+## Características
 
 * Interface gráfica com **Tkinter**
 * **Dicas e palavras**, organizadas em um arquivo `.json`
@@ -16,3 +16,6 @@ Um projeto de jogo da forca interativo desenvolvido com a biblioteca Tkinter do 
 * Código compilado em executável usando a biblioteca **PyInstaller**
 
 ## Como jogar
+* O jogo pode ser executado diretamente via Python pelo arquivo `game.py` ou pelo executável `forca.exe`
+- Executando em Python:
+  ```python forca/game.py```
