@@ -1,1 +1,4 @@
 venv/
+forca/build/
+forca/dist/
+forca/game.spec
