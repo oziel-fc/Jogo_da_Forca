@@ -14,11 +14,11 @@ Um projeto de jogo da forca interativo desenvolvido com a biblioteca **Tkinter**
 * Código compilado em executável usando a biblioteca **PyInstaller**
 
 ## Como jogar
-* O jogo pode ser executado diretamente via Python pelo arquivo `game.py` ou pelo executável `forca.exe`
-  - Executando em Python:
+O jogo pode ser executado diretamente via Python pelo arquivo `game.py` ou pelo executável `forca.exe`
+  * Executando em Python:
   
     ```
     python forca/game.py
     ```
-  - Utilizando o executável:
+  * Utilizando o executável:
     1. Realizar Download
