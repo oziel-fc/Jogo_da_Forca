@@ -17,8 +17,7 @@ Um projeto de jogo da forca interativo desenvolvido com a biblioteca **Tkinter**
 O jogo pode ser executado diretamente via Python pelo arquivo `game.py` ou pelo executável `forca.exe`
 1. Executando em Python
 
-Certique-se que o Python esteja instalado e execute: 
-
+    Certique-se que o Python esteja instalado e execute: 
 
     ```
     python forca/game.py
