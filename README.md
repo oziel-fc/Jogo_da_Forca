@@ -51,5 +51,10 @@ Este projeto utiliza as seguintes bibliotecas:
 
 Use o comando abaixo para instalar apenas as bibliotecas que não fazem parte da instalação padrão do Python:
 
-```bash
+```
 pip install pillow unidecode
+```
+
+## Autor
+Desenvolvido por [oziel-fc](https://github.com/oziel-fc)
+Este projeto faz parte do meu portfólio pessoal. Sinta-se à vontade para explorar, sugerir melhorias ou contribuir!
