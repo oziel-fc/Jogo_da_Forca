@@ -29,3 +29,27 @@ O jogo pode ser executado diretamente via Python pelo arquivo `game.py` ou pelo 
     * Senha: `forca`
     * Executar arquivo `forca.exe`
 
+## Dependências
+
+Este projeto utiliza as seguintes bibliotecas:
+
+### Bibliotecas padrão (incluídas com o Python)
+
+- `tkinter` — Interface gráfica
+- `pathlib` — Manipulação de caminhos e arquivos
+- `webbrowser` — Abertura de links no navegador
+- `json` — Leitura de dicas e palavras
+- `random` — Seleção aleatória de palavras
+- `time` — Controle de tempo e delays
+
+### Bibliotecas externas
+
+- `Pillow (PIL)` — Manipulação e exibição de imagens
+- `unidecode` — Remoção de acentuação das palavras
+
+### Instalação das dependências externas
+
+Use o comando abaixo para instalar apenas as bibliotecas que não fazem parte da instalação padrão do Python:
+
+```bash
+pip install pillow unidecode
