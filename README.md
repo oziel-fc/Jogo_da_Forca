@@ -57,4 +57,5 @@ pip install pillow unidecode
 
 ## Autor
 Desenvolvido por [oziel-fc](https://github.com/oziel-fc)
+
 Este projeto faz parte do meu portfólio pessoal. Sinta-se à vontade para explorar, sugerir melhorias ou contribuir!
