@@ -186,5 +186,6 @@
   {"tip": "Item escolar", "word": "MOCHILA"},
   {"tip": "Peça do xadrez", "word": "TORRE"},
   {"tip": "Objeto de papel", "word": "ENVELOPE"},
-  {"tip": "Comida japonesa", "word": "TEMAKI"}
+  {"tip": "Comida japonesa", "word": "TEMAKI"},
+  {"tip": "Local religioso", "word": "SINAGOGA"}
 ]

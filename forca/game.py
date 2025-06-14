@@ -17,6 +17,8 @@ class Game:
         self.hits_counter = 0
         self.fails_counter = 0
         self.score_text = str()
+        self.height_button = 0.0889
+        self.width_button = 0.0667
 
         self.window = window
         self.color_bg = "#F2ECCE"
@@ -39,7 +41,7 @@ class Game:
         if not hasattr(self, "hangman_img"):
             self.hangman_img = tk.Label(self.window, image=self.img_tk, bg=self.color_bg)
             self.hangman_img.image = self.img_tk
-            self.hangman_img.pack(pady=160)
+            self.hangman_img.place(rely=0.3, relx=0.5, anchor="center")
         else:
             self.hangman_img.config(image=self.img_tk)
             self.hangman_img.image = self.img_tk
@@ -138,7 +140,7 @@ class Game:
         for l in self.letters:
             self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2")
             self.btn_letter.config(command=lambda l_=l, btn=self.btn_letter: self.verify_letter(l_, btn))
-            self.btn_letter.place(relx=self.padding_axisX, y=550, height=80, width=80)
+            self.btn_letter.place(relx=self.padding_axisX, rely=0.62, relheight=self.height_button, relwidth=self.width_button)
             self.padding_axisX += self.size_btn + self.between_btn
     
     
@@ -151,7 +153,7 @@ class Game:
         for l in self.letters:
             self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2")
             self.btn_letter.config(command=lambda l_=l, btn=self.btn_letter: self.verify_letter(l_, btn))
-            self.btn_letter.place(relx=self.padding_axisX, y=663, height=80, width=80)
+            self.btn_letter.place(relx=self.padding_axisX, rely=0.74, relheight=self.height_button, relwidth=self.width_button)
             self.padding_axisX += self.size_btn + self.between_btn
     
     
@@ -164,7 +166,7 @@ class Game:
         for l in self.letters:
             self.btn_letter = tk.Button(self.window, text=l, font=("Comic Sans MS", 20), cursor="hand2")
             self.btn_letter.config(command=lambda l_=l, btn=self.btn_letter: self.verify_letter(l_, btn))
-            self.btn_letter.place(relx=self.padding_axisX, y=776, height=80, width=80)
+            self.btn_letter.place(relx=self.padding_axisX, rely=0.86, relheight=self.height_button, relwidth=self.width_button)
             self.padding_axisX += self.size_btn + self.between_btn
 
     
@@ -178,13 +180,13 @@ class Game:
         self.frame_root = tk.Frame(self.window, bg="#FFFFFF")
         self.frame_root.place(relx=0.1, rely=0.1, relheight=0.8, relwidth=0.8)
         self.victory_text = tk.Label(self.frame_root, text=title, bg="#FFFFFF", font=("Comic Sans MS", 36), fg=title_color)
-        self.victory_text.place(rely=0.07, relx=0.5, anchor="center")
+        self.victory_text.place(rely=0.07, relx=0.5, anchor="center", relheight=0.1)
 
         self.score = tk.Label(self.frame_root, text=self.score_text, bg="#FFFFFF", font=("Comic Sans MS", 20))
-        self.score.place(rely=0.145, relx=0.5, anchor="center")
+        self.score.place(rely=0.145, relx=0.5, anchor="center", relheight=0.066)
 
         self.fails = tk.Label(self.frame_root, text=f"Erros: {self.fails_counter}", bg="#FFFFFF", font=("Comic Sans MS", 20))
-        self.fails.place(rely=0.21, relx=0.5, anchor="center")
+        self.fails.place(rely=0.21, relx=0.5, anchor="center", relheight=0.06)
 
         self.restart_btn = tk.Button(self.frame_root, text="Restart", font=("Comic Sans MS", 20), background="#A6E07F", activebackground="#6FAD45", fg="#163600", 
                                 activeforeground="#163600", cursor="hand2", command=lambda: (self.clear_frame, time.sleep(1), Game(window=self.window)))
@@ -216,7 +218,7 @@ class HomePage:
         self.window.title("Forca")
         self.window.geometry("1200x900")
         self.window.configure(bg=self.color_bg)
-        self.window.minsize(width=1200, height=900)
+        self.window.minsize(width=798, height=600)
         self.window.maxsize(width=1200, height=900)
 
     # Configuração tela inicial
