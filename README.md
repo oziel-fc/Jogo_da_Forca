@@ -22,4 +22,4 @@ O jogo pode ser executado diretamente via Python pelo arquivo `game.py` ou pelo 
     ```
   * Utilizando o executável:
     - Realizar Download:
-      [`Download`]([sha256:490a152f9d52100542b94aad35545c786fd497c9343c74a12c25d01eda81e8bf](https://github.com/oziel-fc/Jogo_da_Forca/releases/download/v1.0/forca.zip))
+      [`Download`](https://github.com/oziel-fc/Jogo_da_Forca/releases/download/v1.0/forca.zip)
