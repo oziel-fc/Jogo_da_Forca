@@ -23,6 +23,7 @@ Certique-se que o Python esteja instalado e execute:
     ```
     python forca/game.py
     ```
+    
 2. Utilizando o executável:
     * Realizar o [`Download`](https://github.com/oziel-fc/Jogo_da_Forca/releases/download/v1.0/forca.zip)
     * Descompactar arquivo ZIP.
